@@ -1,14 +1,13 @@
 Summary:	Anyterm Daemon
 Name:		anytermd
-Version:	1.1.25
-Release:	%mkrel 2
+Version:	1.1.26
+Release:	%mkrel 1
 License:	GPLv2
 Group:		System/Servers
 URL:		http://anyterm.org
 Source0:	http://anyterm.org/download/anyterm-%{version}.tbz2
 Source1:	anytermd.init
 Source2:	anytermd.sysconfig
-Patch0:		anyterm-gcc43.diff
 Requires:	openssl
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
@@ -25,7 +24,6 @@ This is the Anyterm daemon terminal emulator.
 %prep
 
 %setup -q -n anyterm-%{version}
-%patch0 -p0
 
 cp %{SOURCE1} anytermd.init
 cp %{SOURCE2} anytermd.sysconfig
