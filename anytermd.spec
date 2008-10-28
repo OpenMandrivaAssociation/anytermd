@@ -1,6 +1,6 @@
 Summary:	Anyterm Daemon
 Name:		anytermd
-Version:	1.1.26
+Version:	1.1.27
 Release:	%mkrel 1
 License:	GPLv2
 Group:		System/Servers
