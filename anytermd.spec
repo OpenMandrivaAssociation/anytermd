@@ -1,7 +1,7 @@
 Summary:	Anyterm Daemon
 Name:		anytermd
-Version:	1.1.27
-Release:	%mkrel 2
+Version:	1.1.28
+Release:	%mkrel 1
 License:	GPLv2
 Group:		System/Servers
 URL:		http://anyterm.org
@@ -31,9 +31,7 @@ cp %{SOURCE2} anytermd.sysconfig
 %build
 %serverbuild
 
-pushd daemon
-%make GCC_FLAGS="$CFLAGS -pthread -fPIC -D_REENTRANT" OPTIMISE_FLAGS="$CFLAGS -fPIC -D_REENTRANT"
-popd
+%make GCC_FLAGS="$CFLAGS -pthread -fPIC -D_REENTRANT"
 
 %install
 rm -rf %{buildroot}
@@ -43,7 +41,7 @@ install -d %{buildroot}%{_initrddir}
 install -d %{buildroot}%{_sbindir}
 install -d %{buildroot}/var/lib/anytermd
 
-install -m0755 daemon/anytermd %{buildroot}%{_sbindir}/anytermd
+install -m0755 anytermd %{buildroot}%{_sbindir}/anytermd
 install -m0755 anytermd.init %{buildroot}%{_initrddir}/anytermd
 install -m0644 anytermd.sysconfig %{buildroot}%{_sysconfdir}/sysconfig/anytermd
 
@@ -69,4 +67,3 @@ rm -rf %{buildroot}
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/anytermd
 %attr(0755,root,root) %{_sbindir}/anytermd
 %attr(0755,anytermd,anytermd) %dir /var/lib/anytermd
-
