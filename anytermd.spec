@@ -1,7 +1,7 @@
 Summary:	Anyterm Daemon
 Name:		anytermd
 Version:	1.1.29
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2
 Group:		System/Servers
 URL:		http://anyterm.org
