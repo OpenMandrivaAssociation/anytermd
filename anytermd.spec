@@ -8,6 +8,8 @@ URL:		http://anyterm.org
 Source0:	http://anyterm.org/download/anyterm-%{version}.tbz2
 Source1:	anytermd.init
 Source2:	anytermd.sysconfig
+Patch0:		anyterm-1.1.28-respect-LDFLAGS.patch
+Patch1:		anyterm-1.1.29-gcc-4.4.patch
 Requires:	openssl
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
@@ -22,8 +24,9 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 This is the Anyterm daemon terminal emulator.
 
 %prep
-
 %setup -q -n anyterm-%{version}
+%patch0 -p0
+%patch1 -p0
 
 cp %{SOURCE1} anytermd.init
 cp %{SOURCE2} anytermd.sysconfig
@@ -31,7 +34,7 @@ cp %{SOURCE2} anytermd.sysconfig
 %build
 %serverbuild
 
-%make GCC_FLAGS="$CFLAGS -pthread -fPIC -D_REENTRANT"
+%make GCC_FLAGS="%optflags -pthread -fPIC -D_REENTRANT" LDFLAGS="%ldflags"
 
 %install
 rm -rf %{buildroot}
