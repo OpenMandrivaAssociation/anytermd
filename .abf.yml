@@ -1,4 +1,3 @@
+---
 sources:
-  "anyterm-1.1.29.tbz2:"	a0403bbffdf4bcc33daa205cb42e02cc7c1fefff
-  "anytermd.init:"	73b88048d88be0a29b543594fce02db09d9520ce
-  "anytermd.sysconfig:"	dc9cce5191b0b5ef725ae8204cdf8c98935d9ec8
+  anyterm-1.1.29-20121124.tar.bz2: 8a9241d79b0467ae0fcaf6b4b09abbe569fcac22

@@ -1,0 +1,85 @@
+#!/bin/bash
+#
+# description: This shell script takes care of starting and stopping anytermd.
+#
+# chkconfig: 2345 93 83
+
+#
+### BEGIN INIT INFO
+# Provides: anytermd
+# Required-Start: $network
+# Required-Stop: $network
+# Default-Start: 2 3 4 5
+# Short-Description: Anyterm Daemon
+# Description: Anyterm Daemon
+### END INIT INFO
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Source anytermd configuration.
+. /etc/sysconfig/anytermd
+
+# Check that networking is up.
+[ ${NETWORKING} = "no" ] && exit 0
+
+start () {
+    # start daemon
+    echo -n "Starting anytermd: "
+    daemon anytermd \
+    ${ANYTERMD_COMMAND:-""} \
+    ${ANYTERMD_DEVICE:-""} \
+    ${ANYTERMD_PORT:-""} \
+    ${ANYTERMD_USER:-"--user anytermd"} \
+    ${ANYTERMD_AUTH:-"--auth null"} \
+    ${ANYTERMD_CHARSET:-""} \
+    ${ANYTERMD_MAX_SESSIONS:-""} \
+    ${ANYTERMD_MAX_HTTP_CONNECTIONS:-""} \
+    ${ANYTERMD_NAME:-"--name anytermd"} \
+    ${ANYTERMD_OPTIONS:-"--local-only"}
+    RETVAL=$?
+    echo
+    [ $RETVAL = 0 ] && touch /var/lock/subsys/anytermd
+    return $RETVAL
+}
+
+stop () {
+    # stop daemon
+    echo -n "Stopping anytermd: "
+    killproc anytermd
+    RETVAL=$?
+    echo 
+    [ $RETVAL = 0 ] && rm -f /var/lock/subsys/anytermd
+    return $RETVAL
+}
+
+restart () {
+    stop
+    start
+}
+
+case "$1" in
+    start)
+	start
+    ;;
+    stop)
+	stop
+    ;;
+    restart|reload)
+	restart
+    ;;
+    condrestart)
+	[ -f /var/lock/subsys/anytermd ] && restart || :
+    ;;
+    status)
+	status anytermd
+    ;;
+    *)
+    echo $"Usage: $0 {start|stop|restart|reload|condrestart|status}"
+    exit 1
+esac
+
+exit $RETVAL

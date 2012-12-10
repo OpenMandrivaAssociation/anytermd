@@ -1,0 +1,19 @@
+#ANYTERMD_COMMAND="--command ..."
+
+#ANYTERMD_DEVICE="--device ..."
+
+#ANYTERMD_PORT="--port ..."
+
+ANYTERMD_USER="--user anytermd"
+
+ANYTERMD_AUTH="--auth null"
+
+#ANYTERMD_CHARSET="--charset ..."
+
+#ANYTERMD_MAX_SESSIONS="--max-sessions ..."
+
+#ANYTERMD_MAX_HTTP_CONNECTIONS="--max-http-connections ..."
+
+ANYTERMD_NAME="--name anytermd"
+
+ANYTERMD_OPTIONS="--local-only"
