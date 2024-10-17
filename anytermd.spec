@@ -6,7 +6,7 @@ Version:	1.1.29
 Release:	4.%{svn}.1
 License:	GPLv2
 Group:		System/Servers
-URL:		http://anyterm.org
+URL:		https://anyterm.org
 Source0:	http://anyterm.org/download/anyterm-%{version}-%{svn}.tar.bz2
 Source1:	anytermd.init
 Source2:	anytermd.sysconfig
