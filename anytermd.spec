@@ -11,6 +11,7 @@ Source0:	http://anyterm.org/download/anyterm-%{version}-%{svn}.tar.bz2
 Source1:	anytermd.init
 Source2:	anytermd.sysconfig
 Patch0:		anyterm-1.1.28-respect-LDFLAGS.patch
+BuildRequires:	make
 BuildRequires:	boost-devel
 BuildRequires:	librote-devel
 BuildRequires:	mailcap
